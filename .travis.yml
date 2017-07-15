@@ -6,18 +6,17 @@ addons:
     packages:
       - texlive-full
 
-# Decrypt private key for accessing web server
-before_install:
+script:
+  - latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" PothitosCV.tex
+
+after_success:
+  # Decrypt private key for accessing web server
   - openssl aes-256-cbc -K $encrypted_fa893fed2146_key
     -iv $encrypted_fa893fed2146_iv
     -in key_for_uploading.pem.enc
     -out key_for_uploading.pem -d
   - chmod 600 key_for_uploading.pem
-
-script:
-  - latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" PothitosCV.tex
-
-after_success:
+  # Upload to web server
   - scp -i key_for_uploading.pem -o StrictHostKeyChecking=no PothitosCV.pdf
     pothitos@linux02.di.uoa.gr:public_html/
   - ssh -i key_for_uploading.pem -o StrictHostKeyChecking=no
