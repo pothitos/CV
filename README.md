@@ -6,3 +6,6 @@
  - The corresponding Markdown [__web
    page__](http://di.uoa.gr/~pothitos) is still created
    manually.
+ - The skills cloud is created using
+   `SkillsWeightedList.txt` as an input file to
+   WordClouds.com.
