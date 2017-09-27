@@ -19,5 +19,5 @@ after_success:
   # Upload to web server
   - scp -i key_for_uploading.pem -o StrictHostKeyChecking=no PothitosCV.pdf
     pothitos@linux19.di.uoa.gr:public_html/
-  - ssh -i key_for_uploading.pem -o StrictHostKeyChecking=no
-    pothitos@linux19.di.uoa.gr chmod o+r public_html/PothitosCV.pdf
+  - ssh -i key_for_uploading.pem pothitos@linux19.di.uoa.gr
+    chmod o+r public_html/PothitosCV.pdf
